@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+
 import './App.css';
 import React, { useState, useEffect } from "react";
-import { collection, onSnapshot, addDoc, query } from "firebase/firestore";
+import { collection, onSnapshot, query } from "firebase/firestore";
 import { firestoreDb } from './firebase';
 function App() {
 	const [tasks, setTasks] = useState([{ title: "", category: "" }]);
@@ -9,13 +9,16 @@ function App() {
     const q = query(collection(firestoreDb, "vinyles"));
 
     const unSub = onSnapshot(q, (snapshot) => {
-			console.log(snapshot.docs)
       setTasks(
         snapshot.docs.map((doc) => ({ title: doc.data().title, category: doc.data().category }))
       );
     });
     return () => unSub();
   }, []);
+/* 	const newTask = (e: React.MouseEvent<HTMLButtonElement>) => {
+    addDoc(collection(db, "tasks"), { title: input });
+    setInput("");
+  }; */
 	console.log(tasks)
  return (
     <div className="App">
