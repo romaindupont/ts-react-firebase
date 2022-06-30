@@ -1,0 +1,264 @@
+main.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	justify-content: center;
+}
+.carousel {
+	display: block;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	perspective: 1px;
+	scroll-behavior: smooth;
+	-ms-overflow-style: none;
+	overflow: -moz-scrollbars-none;
+	height: 80%;
+ /*  width: 300px;
+	height: 300px;
+  position: relative;
+  perspective: 1000px; */
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card:hover {
+	transform: rotateY(180deg);
+}
+
+.card_face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 260px;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card_face--front {
+  background: red;
+}
+
+.card_face--back {
+  background: blue;
+  transform: rotateY(180deg);
+}
+.carousel-button {
+	position: absolute;
+	bottom: 0;
+}
+
+.realisations-list-3 > li {
+	background: rgb(252, 172, 172);
+	min-width: 400px;
+	height: 400px;
+	margin-left: 5rem;
+	border: 5px solid white;
+	position: absolute;
+	left: 200px;
+	box-shadow:
+		0 1px 0 #ccc,
+		0 2px 0 #acacac,
+		0 3px 0 #a0a0a0,
+		0 4px 0 #9b9a9a,
+		0 5px 0 #888787,
+		0 6px 1px rgb(0 0 0 / 10%),
+		0 0 5px rgb(0 0 0 / 10%),
+		0 1px 3px rgb(0 0 0 / 30%),
+		0 3px 5px rgb(0 0 0 / 30%),
+		0 5px 10px rgb(0 0 0 / 25%),
+		0 10px 10px rgb(0 0 0 / 20%),
+		0 20px 20px rgb(0 0 0 / 15%);
+}
+
+.realisations-carrousel3::-webkit-scrollbar {
+	display: none;
+}
+
+.static-real {
+	background: white;
+}
+.realisations-carrousel3 {
+	perspective: 500px;
+}
+.section-real {
+	position: relative;
+	height: 100%;
+	display: flex;
+}
+
+.realisations-list-3 {
+	display: flex;
+	position: sticky;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+}
+.realisations-item-3 {
+	opacity: 0;
+	position: absolute;
+	bottom: -150px;
+}
+.realisations-item-3:nth-child(6) {
+	opacity: 0;
+	position: absolute;
+	bottom: -150px;
+}
+
+.realisations-item-3:nth-child(5) {
+	opacity: 0;
+	position: absolute;
+	bottom: -150px;
+}
+.realisations-item-3:nth-child(4) {
+	opacity: 0;
+	position: absolute;
+	bottom: -150px;
+}
+.realisations-item-3:nth-child(3) {
+	opacity: 0;
+	position: absolute;
+	bottom: -150px;
+}
+.realisations-item-3:nth-child(2) {
+	opacity: 0;
+	position: absolute;
+	bottom: -150px;
+}
+.realisations-item-3:nth-child(1) {
+	opacity: 1;
+}
+
+$photos: 10;
+
+	@for $i from 1 through $photos {
+		.realisations-item-3:nth-child(#{$i}) {
+				$rotation: (($i - 1) / ($photos - 1)) - 0.5;
+				transform: scale(0.6) rotate($rotation * 25deg);
+		}
+	}
+
+.disk::after {
+	content: '';
+	width: 20%;
+	height: 20%;
+	border-radius: 50%;
+	background: white;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+.disk::before {
+	content: "";
+	width: 50%;
+	height: 50%;
+	border-radius: 50%;
+	background: red;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+.disk {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: black;
+    transform: translate(25%, 0px);
+		transition: all 1s ease-in-out;
+}
+.realisations-item-3:hover > .disk {
+	transform: translate(70%, 0px);
+	transition: all 1s ease-in-out;
+}
+
+span.disk-line {
+	width: 90%;
+	height: 90%;
+	border: 1px solid #666565;
+	border-radius: 50%;
+	background: transparent;
+	position: absolute;
+	z-index: -1;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	&::after {
+		content: "";
+		width: 60%;
+		height: 60%;
+		border: 1px solid #666565;
+		border-radius: 50%;
+		background: transparent;
+		position: absolute;
+		z-index: -1;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		left: 50%;
+	}
+	&::before {
+		content: "";
+		width: 80%;
+		height: 80%;
+		border: 1px solid #666565;
+		border-radius: 50%;
+		background: transparent;
+		position: absolute;
+		z-index: -1;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		left: 50%;
+	}
+}
+span.disk-line--2 {
+	width: 70%;
+	height: 70%;
+	border: 1px solid #666565;
+	border-radius: 50%;
+	background: transparent;
+	position: absolute;
+	z-index: -1;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	&::after {
+		content: "";
+		width: 60%;
+		height: 60%;
+		border: 1px solid #666565;
+		border-radius: 50%;
+		background: transparent;
+		position: absolute;
+		z-index: -1;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		left: 50%;
+	}
+	&::before {
+		content: "";
+		width: 80%;
+		height: 80%;
+		border: 1px solid #666565;
+		border-radius: 50%;
+		background: transparent;
+		position: absolute;
+		z-index: -1;
+		transform: translate(-50%, -50%);
+		top: 50%;
+		left: 50%;
+	}
+}
