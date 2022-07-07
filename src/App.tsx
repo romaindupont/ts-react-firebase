@@ -5,13 +5,13 @@ import { collection, onSnapshot, query } from "firebase/firestore";
 import { firestoreDb } from './firebase';
 import Carousel from './Components/Carousel';
 function App() {
-	const [tasks, setTasks] = useState([{ title: "", category: "" }]);
+	const [tasks, setTasks] = useState([{ title: "", category: "", artist: "", images: '', years: '' }]);
 	useEffect(() => {
     const q = query(collection(firestoreDb, "vinyles"));
 
     const unSub = onSnapshot(q, (snapshot) => {
       setTasks(
-        snapshot.docs.map((doc) => ({ title: doc.data().title, category: doc.data().category }))
+        snapshot.docs.map((doc) => ({ title: doc.data().title, category: doc.data().category, artist: doc.data().artist, images: doc.data().images, years: doc.data().years }))
       );
     });
     return () => unSub();
@@ -29,12 +29,12 @@ function App() {
 				<div className="carousel">
 					<Carousel tasks={tasks} />
 				</div>
-				<div className="info-container">
+				{/* <div className="info-container">
 					{tasks.map((task) => (
 						<li key={task.title} id={task.title}>title: {task.title}</li>
 					))}
 
-				</div>
+				</div> */}
 			</main>
     </div>
   );

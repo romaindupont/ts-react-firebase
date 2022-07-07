@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "mesvinyles-aa557"
+    "default": "mesvinyles-aa557",
+    "staging": "mesvinyles-aa557"
   },
   "targets": {}
 }
